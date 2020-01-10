@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --border-value: solid 2px gray;
+    --padding-value: 1rem;
+}
+
+header {
+    padding-top: var(--padding-value);
+}
+
+#navbar {
+    height: 15vh;
+    border-bottom: var(--border-value);
+    padding: 0 var(--padding-value);
+    overflow: scroll;
+}
+
+.nav-link {
+    display: block;
+}
+
+#main-doc {
+    padding: 0 var(--padding-value);
+}
+
+@media (min-width: 750px) {
+    body {
+        display: flex;
+    }
+
+    #navbar {
+        border-right: var(--border-value);
+        height: 100vh;
+        width: 500px;
+    }
+}
