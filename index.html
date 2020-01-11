@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Technical Documentation Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <nav id="navbar">
     <header><h1>Awk Documentation</h1></header>
-    <a href="#Introduction" class="nav-link">Introduction</a>
-    <a href="#Workflow" class="nav-link">Workflow</a>
-    <a href="#Basic_Syntax" class="nav-link">Basic Syntax</a>
-    <a href="#Basic_Examples" class="nav-link">Basic Examples</a>
-    <a href="#Built_in_Variables" class="nav-link">Built in Variables</a>
+    <ul id="nav-links">
+        <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+        <li><a href="#Workflow" class="nav-link">Workflow</a></li>
+        <li><a href="#Basic_Syntax" class="nav-link">Basic Syntax</a></li>
+        <li><a href="#Basic_Examples" class="nav-link">Basic Examples</a></li>
+        <li><a href="#Built_in_Variables" class="nav-link">Built in Variables</a></li>
+    </ul>
 </nav>
 <main id="main-doc">
     <section class="main-section" id="Introduction">
@@ -22,18 +25,118 @@
         <p>AWK is one of the most prominent text-processing utilities on GNU/Linux. It is very powerful and uses simple programming language. It can solve complex text processing tasks with a few lines of code. Starting with an overview of AWK, its environment, and workflow, the tutorial proceeds to explain the syntax, variables, operators, arrays, loops, and functions used in AWK. It also covers topics such as output redirection and pretty printing.</p>
         <p>This tutorial will be useful for software developers, system administrators, or any enthusiastic reader inclined to learn how to do text processing and data extraction in Unix-like environment. You must have a basic understanding of GNU/Linux operating system and shell scripting.</p>
     </section>
+    <hr>
     <section class="main-section" id="Workflow">
         <header><h2>Workflow</h2></header>
-        <p>To become an expert AWK programmer, you need to know its internals. AWK follows a simple workflow − Read, Execute, and Repeat. </p>
+        <p>To become an expert AWK programmer, you need to know its internals. AWK follows a simple workflow − Read, Execute, and Repeat.</p>
+        <header><h4>Read</h4></header>
+        <p>AWK reads a line from the input stream (file, pipe, or stdin) and stores it in memory.</p>
+        <header><h4>Execute</h4></header>
+        <p>All AWK commands are applied sequentially on the input. By default AWK execute commands on every line. We can restrict this by providing patterns.</p>
+        <header><h4>Repeat</h4></header>
+        <p>This process repeats until the file reaches its end.</p>
+        <header><h3>Program Structure</h3></header>
+        <p>Let us now understand the program structure of AWK.</p>
+        <header><h4>BEGIN block</h4></header>
+        <p>The syntax of the BEGIN block is as follows −</p>
+        <code>BEGIN {awk-commands}</code>
+        <p>The BEGIN block gets executed at program start-up. It executes only once. This is good place to initialize variables. BEGIN is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
+        <header><h4>Body Block</h4></header>
+        <p>The syntax of the body block is as follows −</p>
+        <code>/pattern/ {awk-commands}</code>
+        <p>The body block applies AWK commands on every input line. By default, AWK executes commands on every line. We can restrict this by providing patterns. Note that there are no keywords for the Body block.</p>
+        <header><h4>END Block</h4></header>
+        <p>The syntax of the END block is as follows −</p>
+        <code>END {awk-commands}</code>
+        <p>The END block executes at the end of the program. END is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
+        <p>Let us create a file <strong>marks.txt</strong> which contains the serial number, name of the student, subject name, and number of marks obtained.</p>
+        <pre><code>1)  Amit    Physics  80
+2)  Rahul   Maths    90
+3)  Shyam   Biology  87
+4)  Kedar   English  85
+5)  Hari    History  89</code></pre>
+        <p>Let us now display the file contents with header by using AWK script.</p>
+        <code>[jerry]$ awk 'BEGIN{printf "Sr No\tName\tSub\tMarks\n"} {print}' marks.txt</code>
+        <p>When this code is executed, it produces the following result −</p>
+        <pre><code>Sr No Name Sub Marks
+1) Amit Physics 80
+2) Rahul Maths 90
+3) Shyam Biology 87
+4) Kedar English 85
+5) Hari History 89</code></pre>
+        <p>At the start, AWK prints the header from the BEGIN block. Then in the body block, it reads a line from a file and executes AWK's print command which just prints the contents on the standard output stream. This process repeats until file reaches the end.</p>
     </section>
+    <hr>
     <section class="main-section" id="Basic_Syntax">
         <header><h2>Basic Syntax</h2></header>
         <p>AWK is simple to use. We can provide AWK commands either directly from the command line or in the form of a text file containing AWK commands.</p>
+        <header><h3>AWK Command Line</h3></header>
+        <p>We can specify an AWK command within single quotes at command line as shown −</p>
+        <code>awk [options] file ...</code>
+        <header><h4>Example</h4></header>
+        <p>Consider a text file <strong>marks.txt</strong> with the following content −</p>
+        <pre><code>1)  Amit    Physics  80
+2)  Rahul   Maths    90
+3)  Shyam   Biology  87
+4)  Kedar   English  85
+5)  Hari    History  89</code></pre>
+        <p>Let us display the complete content of the file using AWK as follows −</p>
+        <code>[jerry]$ awk '{print}' marks.txt</code>
+        <p>On executing this code, you get the following result −</p>
+        <pre><code>1)  Amit    Physics  80
+2)  Rahul   Maths    90
+3)  Shyam   Biology  87
+4)  Kedar   English  85
+5)  Hari    History  89</code></pre>
+        <header><h3>AWK Program File</h3></header>
+        <p>We can provide AWK commands in a script file as shown −</p>
+        <code>awk [options] -f file ...</code>
+        <p>First, create a text file command.awk containing the AWK command as shown below −</p>
+        <code>{print}</code>
+        <p>Now we can instruct the AWK to read commands from the text file and perform the action. Here, we achieve the same result as shown in the above example.</p>
+        <code>[jerry]$ awk -f command.awk marks.txt</code>
+        <p>On executing this code, you get the following result −</p>
+        <pre><code>1) Amit  Physics 80
+2) Rahul Maths   90
+3) Shyam Biology 87
+4) Kedar English 85
+5) Hari  History 89</code></pre>
     </section>
+    <hr>
     <section class="main-section" id="Basic_Examples">
         <header><h2>Basic Examples</h2></header>
-        <p>This chapter describes several useful AWK commands and their appropriate examples. Consider a text file marks.txt to be processed with the following content −</p>
+        <p>This chapter describes several useful AWK commands and their appropriate examples. Consider a text file <strong>marks.txt</strong> to be processed with the following content −</p>
+        <pre><code>1) Amit  Physics 80
+2) Rahul Maths   90
+3) Shyam Biology 87
+4) Kedar English 85
+5) Hari  History 89</code></pre>
+        <header><h3>Printing Column or Field</h3></header>
+        <p>You can instruct AWK to print only certain columns from the input field. The following example demonstrates this −</p>
+        <code>[jerry]$ awk '{print $3 "\t" $4}' marks.txt</code>
+        <p>On executing this code, you get the following result −</p>
+        <pre><code>Physics   80
+Maths     90
+Biology   87
+English   85
+History   89</code></pre>
+        <p>In the file <strong>marks.txt</strong>, the third column contains the subject name and the fourth column contains the marks obtained in a particular subject. Let us print these two columns using AWK print command. In the above example, <strong>$3</strong> and <strong>$4</strong> represent the third and the fourth fields respectively from the input record.</p>
+        <header><h3>Printing All Lines</h3></header>
+        <p>By default, AWK prints all the lines that match pattern.</p>
+        <code>[jerry]$ awk '/a/ {print $0}' marks.txt</code>
+        <p>On executing this code, you get the following result −</p>
+        <pre><code>2) Rahul    Maths     90
+3) Shyam    Biology   87
+4) Kedar    English   85
+5) Hari     History   89</code></pre>
+        <p>In the above example, we are searching form pattern <strong>a</strong>. When a pattern match succeeds, it executes a command from the body block. In the absence of a body block − default action is taken which is print the record. Hence, the following command produces the same result −</p>
+        <code>[jerry]$ awk '/a/' marks.txt</code>
+        <header><h3>Printing Columns by Pattern</h3></header>
+        <header><h3>Printing Columns in Any Order</h3></header>
+        <header><h3>Counting and Printing Matched Pattern</h3></header>
+        <header><h3>Printing Lines with More than 18 Characters</h3></header>
     </section>
+    <hr>
     <section class="main-section" id="Built_in_Variables">
         <header><h2>Built in Variables</h2></header>
         <p>AWK provides several built-in variables. They play an important role while writing AWK scripts. This chapter demonstrates the usage of built-in variables.</p>

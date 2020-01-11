@@ -1,3 +1,5 @@
+/* Universal styles and variables */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,37 +7,99 @@
 }
 
 :root {
-    --border-value: solid 2px gray;
+    --code-color: #F4F3F1;
+    --nav-bar-height: 33vh;
+    --nav-bar-width: 250px;
     --padding-value: 1rem;
+    --thin-border: solid 1px gray;
+    --thick-border: solid 2px gray;
 }
 
-header {
-    padding-top: var(--padding-value);
-}
+/* Navigation bar styles*/
 
 #navbar {
-    height: 15vh;
-    border-bottom: var(--border-value);
-    padding: 0 var(--padding-value);
-    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    height: var(--nav-bar-height);
+    border-bottom: var(--thick-border);
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+#nav-links {
+    flex-grow: 1;
+    overflow-y: scroll;
+    border: var(--thin-border);
+}
+
+#nav-links li {
+    padding: var(--padding-value);
+    border-bottom: var(--thin-border);
 }
 
 .nav-link {
-    display: block;
+    color: black;
 }
+
+/* Main document styles */
 
 #main-doc {
     padding: 0 var(--padding-value);
 }
 
+code {
+    font-family: 'Inconsolata', monospace;
+    background-color: var(--code-color);
+    display: block;
+    padding: var(--padding-value);
+}
+
+p + p,
+pre + p,
+p + pre,
+code + p,
+p + code {
+    margin-top: var(--padding-value);
+}
+
+hr {
+    margin: var(--padding-value) auto;
+    margin-top: calc(2 * var(--padding-value));
+    width: 95%;
+}
+
+section:last-child {
+    margin-bottom: calc(2 * var(--padding-value));
+}
+
+/* Miscellaneous styles */
+
+header {
+    padding: var(--padding-value) 0;
+}
+
+/* Media query */
+
 @media (min-width: 750px) {
     body {
         display: flex;
+        font-size: 1.1rem;
     }
 
     #navbar {
-        border-right: var(--border-value);
+        border-right: var(--thick-border);
         height: 100vh;
-        width: 500px;
+        position: fixed;
+        width: var(--nav-bar-width);
+    }
+
+    #main-doc {
+        padding-right: var(--padding-value);
+        position: relative;
+        left: var(--nav-bar-width);
+        width: calc(98vw - var(--nav-bar-width));
     }
 }
