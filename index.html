@@ -17,6 +17,7 @@
         <li><a href="#Basic_Syntax" class="nav-link">Basic Syntax</a></li>
         <li><a href="#Basic_Examples" class="nav-link">Basic Examples</a></li>
         <li><a href="#Built_in_Variables" class="nav-link">Built in Variables</a></li>
+        <li>Hello world!</li>
     </ul>
 </nav>
 <main id="main-doc">
@@ -29,65 +30,83 @@
     <section class="main-section" id="Workflow">
         <header><h2>Workflow</h2></header>
         <p>To become an expert AWK programmer, you need to know its internals. AWK follows a simple workflow − Read, Execute, and Repeat.</p>
-        <header><h4>Read</h4></header>
-        <p>AWK reads a line from the input stream (file, pipe, or stdin) and stores it in memory.</p>
-        <header><h4>Execute</h4></header>
-        <p>All AWK commands are applied sequentially on the input. By default AWK execute commands on every line. We can restrict this by providing patterns.</p>
-        <header><h4>Repeat</h4></header>
-        <p>This process repeats until the file reaches its end.</p>
-        <header><h3>Program Structure</h3></header>
-        <p>Let us now understand the program structure of AWK.</p>
-        <header><h4>BEGIN block</h4></header>
-        <p>The syntax of the BEGIN block is as follows −</p>
-        <code>BEGIN {awk-commands}</code>
-        <p>The BEGIN block gets executed at program start-up. It executes only once. This is good place to initialize variables. BEGIN is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
-        <header><h4>Body Block</h4></header>
-        <p>The syntax of the body block is as follows −</p>
-        <code>/pattern/ {awk-commands}</code>
-        <p>The body block applies AWK commands on every input line. By default, AWK executes commands on every line. We can restrict this by providing patterns. Note that there are no keywords for the Body block.</p>
-        <header><h4>END Block</h4></header>
-        <p>The syntax of the END block is as follows −</p>
-        <code>END {awk-commands}</code>
-        <p>The END block executes at the end of the program. END is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
-        <p>Let us create a file <strong>marks.txt</strong> which contains the serial number, name of the student, subject name, and number of marks obtained.</p>
-        <pre><code>1)  Amit    Physics  80
+        <section>
+            <header><h4>Read</h4></header>
+            <p>AWK reads a line from the input stream (file, pipe, or stdin) and stores it in memory.</p>
+        </section>
+        <section>
+            <header><h4>Execute</h4></header>
+            <p>All AWK commands are applied sequentially on the input. By default AWK execute commands on every line. We can restrict this by providing patterns.</p>
+        </section>
+        <section>
+            <header><h4>Repeat</h4></header>
+            <p>This process repeats until the file reaches its end.</p>
+        </section>
+        <section>
+            <header><h3>Program Structure</h3></header>
+            <p>Let us now understand the program structure of AWK.</p>
+            <section>
+                <header><h4>BEGIN block</h4></header>
+                <p>The syntax of the BEGIN block is as follows −</p>
+                <code>BEGIN {awk-commands}</code>
+                <p>The BEGIN block gets executed at program start-up. It executes only once. This is good place to initialize variables. BEGIN is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
+            </section>
+            <section>
+                <header><h4>Body Block</h4></header>
+                <p>The syntax of the body block is as follows −</p>
+                <code>/pattern/ {awk-commands}</code>
+                <p>The body block applies AWK commands on every input line. By default, AWK executes commands on every line. We can restrict this by providing patterns. Note that there are no keywords for the Body block.</p>
+            </section>
+            <section>
+                <header><h4>END Block</h4></header>
+                <p>The syntax of the END block is as follows −</p>
+                <code>END {awk-commands}</code>
+                <p>The END block executes at the end of the program. END is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
+                <p>Let us create a file <strong>marks.txt</strong> which contains the serial number, name of the student, subject name, and number of marks obtained.</p>
+                <pre><code>1)  Amit    Physics  80
 2)  Rahul   Maths    90
 3)  Shyam   Biology  87
 4)  Kedar   English  85
 5)  Hari    History  89</code></pre>
-        <p>Let us now display the file contents with header by using AWK script.</p>
-        <code>[jerry]$ awk 'BEGIN{printf "Sr No\tName\tSub\tMarks\n"} {print}' marks.txt</code>
-        <p>When this code is executed, it produces the following result −</p>
-        <pre><code>Sr No Name Sub Marks
+                <p>Let us now display the file contents with header by using AWK script.</p>
+                <code>[jerry]$ awk 'BEGIN{printf "Sr No\tName\tSub\tMarks\n"} {print}' marks.txt</code>
+                <p>When this code is executed, it produces the following result −</p>
+                <pre><code>Sr No Name Sub Marks
 1) Amit Physics 80
 2) Rahul Maths 90
 3) Shyam Biology 87
 4) Kedar English 85
 5) Hari History 89</code></pre>
-        <p>At the start, AWK prints the header from the BEGIN block. Then in the body block, it reads a line from a file and executes AWK's print command which just prints the contents on the standard output stream. This process repeats until file reaches the end.</p>
+                <p>At the start, AWK prints the header from the BEGIN block. Then in the body block, it reads a line from a file and executes AWK's print command which just prints the contents on the standard output stream. This process repeats until file reaches the end.</p> 
+            </section>
+        </section>
     </section>
     <hr>
     <section class="main-section" id="Basic_Syntax">
         <header><h2>Basic Syntax</h2></header>
         <p>AWK is simple to use. We can provide AWK commands either directly from the command line or in the form of a text file containing AWK commands.</p>
-        <header><h3>AWK Command Line</h3></header>
-        <p>We can specify an AWK command within single quotes at command line as shown −</p>
-        <code>awk [options] file ...</code>
-        <header><h4>Example</h4></header>
-        <p>Consider a text file <strong>marks.txt</strong> with the following content −</p>
-        <pre><code>1)  Amit    Physics  80
+        <section>
+            <header><h3>AWK Command Line</h3></header>
+            <p>We can specify an AWK command within single quotes at command line as shown −</p>
+            <code>awk [options] file ...</code>
+            <section>
+                <header><h4>Example</h4></header>
+                <p>Consider a text file <strong>marks.txt</strong> with the following content −</p>
+                <pre><code>1)  Amit    Physics  80
 2)  Rahul   Maths    90
 3)  Shyam   Biology  87
 4)  Kedar   English  85
 5)  Hari    History  89</code></pre>
-        <p>Let us display the complete content of the file using AWK as follows −</p>
-        <code>[jerry]$ awk '{print}' marks.txt</code>
-        <p>On executing this code, you get the following result −</p>
-        <pre><code>1)  Amit    Physics  80
+                <p>Let us display the complete content of the file using AWK as follows −</p>
+                <code>[jerry]$ awk '{print}' marks.txt</code>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>1)  Amit    Physics  80
 2)  Rahul   Maths    90
 3)  Shyam   Biology  87
 4)  Kedar   English  85
 5)  Hari    History  89</code></pre>
+            </section>
+        </section>
         <header><h3>AWK Program File</h3></header>
         <p>We can provide AWK commands in a script file as shown −</p>
         <code>awk [options] -f file ...</code>
@@ -101,6 +120,127 @@
 3) Shyam Biology 87
 4) Kedar English 85
 5) Hari  History 89</code></pre>
+        <header><h3>AWK Standard Options</h3></header>
+        <p>AWK supports the following standard options which can be provided from the command line.</p>
+        <section>
+            <header><h4>The -v option</h4></header>
+            <p>This option assigns a value to a variable. It allows assignment before the program execution. The following example describes the usage of the -v option.</p>
+            <code>[jerry]$ awk -v name=Jerry 'BEGIN{printf "Name = %s\n", name}'</code>
+            <p>On executing this code, you get the following result −</p>
+            <code>Name = Jerry</code>
+        </section>
+        <section>
+            <header><h4>The --dump-variables[=file] option</h4></header>
+            <p>It prints a sorted list of global variables and their final values to file. The default file is <strong>awkvars.out</strong>.</p>
+            <pre><code>[jerry]$ awk --dump-variables ''
+[jerry]$ cat awkvars.out</code></pre>
+            <p>On executing the above code, you get the following result −</p>
+            <pre><code>ARGC: 1
+ARGIND: 0
+ARGV: array, 1 elements
+BINMODE: 0
+CONVFMT: "%.6g"
+ERRNO: ""
+FIELDWIDTHS: ""
+FILENAME: ""
+FNR: 0
+FPAT: "[^[:space:]]+"
+FS: " "
+IGNORECASE: 0
+LINT: 0
+NF: 0
+NR: 0
+OFMT: "%.6g"
+OFS: " "
+ORS: "\n"
+RLENGTH: 0
+RS: "\n"
+RSTART: 0
+RT: ""
+SUBSEP: "\034"
+TEXTDOMAIN: "messages"</code></pre>
+        </section>
+        <section>
+            <header><h4>The --help option</h4></header>
+            <p>This option prints the help message on standard output.</p>
+            <code>[jerry]$ awk --help</code>
+            <p>On executing this code, you get the following result −</p>
+            <pre><code>Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
+Usage: awk [POSIX or GNU style options] [--] 'program' file ...
+POSIX options : GNU long options: (standard)
+   -f progfile                --file=progfile
+   -F fs                      --field-separator=fs
+   -v var=val                 --assign=var=val
+Short options : GNU long options: (extensions)
+   -b                         --characters-as-bytes
+   -c                         --traditional
+   -C                         --copyright
+   -d[file]                   --dump-variables[=file]
+   -e 'program-text'          --source='program-text'
+   -E file                    --exec=file
+   -g                         --gen-pot
+   -h                         --help
+   -L [fatal]                 --lint[=fatal]
+   -n                         --non-decimal-data
+   -N                         --use-lc-numeric
+   -O                         --optimize
+   -p[file]                   --profile[=file]
+   -P                         --posix
+   -r                         --re-interval
+   -S                         --sandbox
+   -t                         --lint-old
+   -V                         --version</code></pre>
+        </section>
+        <section>
+            <header><h4>The --lint[=fatal] option</h4></header>
+            <p>This option enables checking of non-portable or dubious constructs. When an argument <strong>fatal</strong> is provided, it treats warning messages as errors. The following example demonstrates this −</p>
+            <code>[jerry]$ awk --lint '' /bin/ls</code>
+            <p>On executing this code, you get the following result −</p>
+            <pre><code>awk: cmd. line:1: warning: empty program text on command line
+awk: cmd. line:1: warning: source file does not end in newline
+awk: warning: no program text at all!</code></pre>
+        </section>
+        <section>
+            <header><h4>The --posix option</h4></header>
+            <p>This option turns on strict POSIX compatibility, in which all common and gawk-specific extensions are disabled.</p>
+        </section>
+        <section>
+            <header><h4>The --profile[=file] option</h4></header>
+            <p>This option generates a pretty-printed version of the program in file. Default file is awkprof.out. Below simple example illustrates this −</p>
+            <pre><code>[jerry]$ awk --profile 'BEGIN{printf"---|Header|--\n"} {print} 
+END{printf"---|Footer|---\n"}' marks.txt > /dev/null 
+[jerry]$ cat awkprof.out</code></pre>
+            <p>On executing this code, you get the following result −</p>
+            <pre><code># gawk profile, created Sun Oct 26 19:50:48 2014
+    
+    # BEGIN block(s)
+             
+    BEGIN {
+       printf "---|Header|--\n"
+    }
+             
+    # Rule(s) {
+        print $0
+    }
+             
+    # END block(s)
+             
+    END {
+       printf "---|Footer|---\n"
+    }</code></pre>
+        </section>
+        <section>
+            <header><h4>The --traditional option</h4></header>
+            <p>This option disables all gawk-specific extensions.</p>
+        </section>
+        <section>
+            <header><h4>The --version option</h4></header>
+            <p>This option displays the version information of the AWK program.</p>
+            <code>[jerry]$ awk --version</code>
+            <p>When this code is executed, it produces the following result −</p>
+            <pre><code>GNU Awk 4.0.1
+Copyright (C) 1989, 1991-2012 Free Software Foundation.</code></pre>
+        </section>
     </section>
     <hr>
     <section class="main-section" id="Basic_Examples">
@@ -111,35 +251,272 @@
 3) Shyam Biology 87
 4) Kedar English 85
 5) Hari  History 89</code></pre>
-        <header><h3>Printing Column or Field</h3></header>
-        <p>You can instruct AWK to print only certain columns from the input field. The following example demonstrates this −</p>
-        <code>[jerry]$ awk '{print $3 "\t" $4}' marks.txt</code>
-        <p>On executing this code, you get the following result −</p>
-        <pre><code>Physics   80
+        <section>
+            <header><h3>Printing Column or Field</h3></header>
+            <p>You can instruct AWK to print only certain columns from the input field. The following example demonstrates this −</p>
+            <code>[jerry]$ awk '{print $3 "\t" $4}' marks.txt</code>
+            <p>On executing this code, you get the following result −</p>
+            <pre><code>Physics   80
 Maths     90
 Biology   87
 English   85
 History   89</code></pre>
-        <p>In the file <strong>marks.txt</strong>, the third column contains the subject name and the fourth column contains the marks obtained in a particular subject. Let us print these two columns using AWK print command. In the above example, <strong>$3</strong> and <strong>$4</strong> represent the third and the fourth fields respectively from the input record.</p>
-        <header><h3>Printing All Lines</h3></header>
-        <p>By default, AWK prints all the lines that match pattern.</p>
-        <code>[jerry]$ awk '/a/ {print $0}' marks.txt</code>
-        <p>On executing this code, you get the following result −</p>
-        <pre><code>2) Rahul    Maths     90
+            <p>In the file <strong>marks.txt</strong>, the third column contains the subject name and the fourth column contains the marks obtained in a particular subject. Let us print these two columns using AWK print command. In the above example, <strong>$3</strong> and <strong>$4</strong> represent the third and the fourth fields respectively from the input record.</p>
+        </section>
+        <section>
+            <header><h3>Printing All Lines</h3></header>
+            <p>By default, AWK prints all the lines that match pattern.</p>
+            <code>[jerry]$ awk '/a/ {print $0}' marks.txt</code>
+            <p>On executing this code, you get the following result −</p>
+            <pre><code>2) Rahul    Maths     90
 3) Shyam    Biology   87
 4) Kedar    English   85
 5) Hari     History   89</code></pre>
-        <p>In the above example, we are searching form pattern <strong>a</strong>. When a pattern match succeeds, it executes a command from the body block. In the absence of a body block − default action is taken which is print the record. Hence, the following command produces the same result −</p>
-        <code>[jerry]$ awk '/a/' marks.txt</code>
-        <header><h3>Printing Columns by Pattern</h3></header>
-        <header><h3>Printing Columns in Any Order</h3></header>
-        <header><h3>Counting and Printing Matched Pattern</h3></header>
-        <header><h3>Printing Lines with More than 18 Characters</h3></header>
+            <p>In the above example, we are searching form pattern <strong>a</strong>. When a pattern match succeeds, it executes a command from the body block. In the absence of a body block − default action is taken which is print the record. Hence, the following command produces the same result −</p>
+            <code>[jerry]$ awk '/a/' marks.txt</code>
+        </section>
+        <section>
+            <header><h3>Printing Columns by Pattern</h3></header>
+            <p>When a pattern match succeeds, AWK prints the entire record by default. But you can instruct AWK to print only certain fields. For instance, the following example prints the third and fourth field when a pattern match succeeds.</p>
+            <code>[jerry]$ awk '/a/ {print $3 "\t" $4}' marks.txt</code>
+            <p>On executing this code, you get the following result −</p>
+            <pre><code>Maths    90
+Biology  87
+English  85
+History  89</code></pre>
+        </section>
+        <section>
+            <header><h3>Printing Columns in Any Order</h3></header>
+            <p>You can print columns in any order. For instance, the following example prints the fourth column followed by the third column.</p>
+            <code>[jerry]$ awk '/a/ {print $4 "\t" $3}' marks.txt</code>
+            <p>On executing the above code, you get the following result −</p>
+            <pre><code>90   Maths
+87   Biology
+85   English
+89   History</code></pre>
+        </section>
+        <section>
+            <header><h3>Counting and Printing Matched Pattern</h3></header>
+            <p>Let us see an example where you can count and print the number of lines for which a pattern match succeeded.</p>
+            <code>[jerry]$ awk '/a/{++cnt} END {print "Count = ", cnt}' marks.txt</code>
+            <p>On executing this code, you get the following result −</p>
+            <code>Count = 4</code>
+            <p>In this example, we increment the value of counter when a pattern match succeeds and we print this value in the END block. Note that unlike other programming languages, there is no need to declare a variable before using it.</p>
+        </section>
+        <section>
+            <header><h3>Printing Lines with More than 18 Characters</h3></header>
+            <p>Let us print only those lines that contain more than 18 characters.</p>
+            <code>[jerry]$ awk 'length($0) > 18' marks.txt</code>
+            <p>On executing this code, you get the following result −</p>
+            <pre><code>3) Shyam   Biology   87
+4) Kedar   English   85</code></pre>
+            <p>AWK provides a built-in length function that returns the <strong>length</strong> of the string. <strong>$0</strong> variable stores the entire line and in the absence of a body block, default action is taken, i.e., the print action. Hence, if a line has more than 18 characters, then the comparison results true and the line gets printed.</p>
+        </section>
     </section>
     <hr>
     <section class="main-section" id="Built_in_Variables">
         <header><h2>Built in Variables</h2></header>
         <p>AWK provides several built-in variables. They play an important role while writing AWK scripts. This chapter demonstrates the usage of built-in variables.</p>
+        <section>
+            <header><h3>Standard AWK variables</h3></header>
+            <section>
+                <header><h4>ARGC</h4></header>
+                <p>It implies the number of arguments provided at the command line.</p>
+                <code>[jerry]$ awk 'BEGIN {print "Arguments =", ARGC}' One Two Three Four</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>Arguments = 5</code>
+                <p>But why AWK shows 5 when you passed only 4 arguments? Just check the following example to clear your doubt.</p>
+            </section>
+            <section>
+                <header><h4>ARGV</h4></header>
+                <p>It is an array that stores the command-line arguments. The array's valid index ranges from 0 to ARGC-1.</p>
+                <pre><code>[jerry]$ awk 'BEGIN { 
+    for (i = 0; i < ARGC - 1; ++i) { 
+        printf "ARGV[%d] = %s\n", i, ARGV[i] 
+    } 
+}' one two three four</code></pre>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>ARGV[0] = awk
+ARGV[1] = one
+ARGV[2] = two
+ARGV[3] = three</code></pre>
+            </section>
+            <section>
+                <header><h4>CONVFMT</h4></header>
+                <p>It represents the conversion format for numbers. Its default value is <strong>%.6g</strong>.</p>
+                <code>[jerry]$ awk 'BEGIN { print "Conversion Format =", CONVFMT }'</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>Conversion Format = %.6g</code>
+            </section>
+            <section>
+                <header><h4>ENVIRON</h4></header>
+                <p>It is an associative array of environment variables.</p>
+                <code>[jerry]$ awk 'BEGIN { print ENVIRON["USER"] }'</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>jerry</code>
+                <p>To find names of other environment variables, use <strong>env</strong> command.</p>
+            </section>
+            <section>
+                <header><h4>FILENAME</h4></header>
+                <p>It represents the current file name.</p>
+                <code>[jerry]$ awk 'END {print FILENAME}' marks.txt</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>marks.txt</code>
+                <p>Please note that FILENAME is undefined in the BEGIN block.</p>
+            </section>
+            <section>
+                <header><h4>FS</h4></header>
+                <p>It represents the (input) field separator and its default value is space. You can also change this by using <strong>-F</strong> command line option.</p>
+                <code>[jerry]$ awk 'BEGIN {print "FS = " FS}' | cat -vte</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>FS =  $</code>
+            </section>
+            <section>
+                <header><h4>NF</h4></header>
+                <p>It represents the number of fields in the current record. For instance, the following example prints only those lines that contain more than two fields.</p>
+                <code>[jerry]$ echo -e "One Two\nOne Two Three\nOne Two Three Four" | awk 'NF > 2'</code>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>One Two Three
+One Two Three Four</code></pre>
+            </section>
+            <section>
+                <header><h4>NR</h4></header>
+                <p>It represents the number of the current record. For instance, the following example prints the record if the current record number is less than three.</p>
+                <code>[jerry]$ echo -e "One Two\nOne Two Three\nOne Two Three Four" | awk 'NR &lt; 3'</code>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>One Two
+One Two Three</code></pre>
+            </section>
+            <section>
+                <header><h4>FNR</h4></header>
+                <p>It is similar to NR, but relative to the current file. It is useful when AWK is operating on multiple files. Value of FNR resets with new file.</p>
+            </section>
+            <section>
+                <header><h4>OFMT</h4></header>
+                <p>It represents the output format number and its default value is <strong>%.6g</strong>.</p>
+                <code>[jerry]$ awk 'BEGIN {print "OFMT = " OFMT}'</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>OFMT = %.6g</code>
+            </section>
+            <section>
+                <header><h4>OFS</h4></header>
+                <p>It represents the output field separator and its default value is space.</p>
+                <code>[jerry]$ awk 'BEGIN {print "OFS = " OFS}' | cat -vte</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>OFS =  $</code>
+            </section>
+            <section>
+                <header><h4>ORS</h4></header>
+                <p>It represents the output record separator and its default value is newline.</p>
+                <code>[jerry]$ awk 'BEGIN {print "ORS = " ORS}' | cat -vte</code>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>ORS = $
+$</code></pre>
+            </section>
+            <section>
+                <header><h4>RLENGTH</h4></header>
+                <p>It represents the length of the string matched by <strong>match</strong> function. AWK's match function searches for a given string in the input-string.</p>
+                <code>[jerry]$ awk 'BEGIN { if (match("One Two Three", "re")) { print RLENGTH } }'</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>2</code>
+            </section>
+            <section>
+                <header><h4>RS</h4></header>
+                <p>It represents (input) record separator and its default value is newline.</p>
+                <code>[jerry]$ awk 'BEGIN {print "RS = " RS}' | cat -vte</code>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>RS = $
+$</code></pre>
+            </section>
+            <section>
+                <header><h4>RSTART</h4></header>
+                <p>It represents the first position in the string matched by <strong>match</strong> function.</p>
+                <code>[jerry]$ awk 'BEGIN { if (match("One Two Three", "Thre")) { print RSTART } }'</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>9</code>
+            </section>
+            <section>
+                <header><h4>SUBSEP</h4></header>
+                <p>It represents the separator character for array subscripts and its default value is <strong>\034</strong>.</p>
+                <code>[jerry]$ awk 'BEGIN { print "SUBSEP = " SUBSEP }' | cat -vte</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>SUBSEP = ^\$</code>
+            </section>
+            <section>
+                <header><h4>$0</h4></header>
+                <p>It represents the entire input record.</p>
+                <code>[jerry]$ awk '{print $0}' marks.txt</code>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>1) Amit     Physics   80
+2) Rahul    Maths     90
+3) Shyam    Biology   87
+4) Kedar    English   85
+5) Hari     History   89</code></pre>
+            </section>
+            <section>
+                <header><h4>$n</h4></header>
+                <p>It represents the n<sup>th</sup> field in the current record where the fields are separated by FS.</p>
+                <code>[jerry]$ awk '{print $3 "\t" $4}' marks.txt</code>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>Physics   80
+Maths     90
+Biology   87
+English   85
+History   89</code></pre>
+            </section>
+        </section>
+        <section>
+            <header><h3>GNU AWK Specific Variables</h3></header>
+            <p>GNU AWK specific variables are as follows −</p>
+            <section>
+                <header><h4>ARGIND</h4></header>
+                <p>It represents the index in ARGV of the current file being processed.</p>
+                <pre><code>[jerry]$ awk '{ 
+    print "ARGIND   = ", ARGIND; print "Filename = ", ARGV[ARGIND] 
+}' junk1 junk2 junk3</code></pre>
+                <p>On executing this code, you get the following result −</p>
+                <pre><code>ARGIND   =  1
+Filename =  junk1
+ARGIND   =  2
+Filename =  junk2
+ARGIND   =  3
+Filename =  junk3</code></pre>
+            </section>
+            <section>
+                <header><h4>BINMODE</h4></header>
+                <p>It is used to specify binary mode for all file I/O on non-POSIX systems. Numeric values of 1, 2, or 3 specify that input files, output files, or all files, respectively, should use binary I/O. String values of <strong>r</strong> or <strong>w</strong> specify that input files or output files, respectively, should use binary I/O. String values of <strong>rw</strong> or <strong>wr</strong> specify that all files should use binary I/O.</p>
+            </section>
+            <section>
+                <header><h4>ERRNO</h4></header>
+                <p>A string indicates an error when a redirection fails for <strong>getline</strong> or if <strong>code</strong> call fails.</p>
+                <code>[jerry]$ awk 'BEGIN { ret = getline &lt; "junk.txt"; if (ret == -1) print "Error:", ERRNO }'</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>Error: No such file or directory</code>
+            </section>
+            <section>
+                <header><h4>FIELDWIDTHS</h4></header>
+                <p>A space separated list of field widths variable is set, GAWK parses the input into fields of fixed width, instead of using the value of the FS variable as the field separator.</p>
+            </section>
+            <section>
+                <header><h4>IGNORECASE</h4></header>
+                <p>When this variable is set, GAWK becomes case-insensitive. The following example demonstrates this −</p>
+                <code>[jerry]$ awk 'BEGIN{IGNORECASE = 1} /amit/' marks.txt</code>
+                <p>On executing this code, you get the following result −</p>
+                <code>1) Amit  Physics   80</code>
+            </section>
+            <section>
+                <header><h4>LINT</h4></header>
+                <p>On executing this code, you get the following result −</p>
+            </section>
+            <section>
+                <header><h4>PROCINFO</h4></header>
+                <p>On executing this code, you get the following result −</p>
+            </section>
+            <section>
+                <header><h4>TEXTDOMAIN</h4></header>
+                <p>On executing this code, you get the following result −</p>
+            </section>
+        </section>
     </section>
 </main>
 </body>

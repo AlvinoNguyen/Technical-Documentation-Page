@@ -55,6 +55,15 @@ code {
     background-color: var(--code-color);
     display: block;
     padding: var(--padding-value);
+    text-overflow: ellipsis;
+}
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
 p + p,
@@ -71,7 +80,7 @@ hr {
     width: 95%;
 }
 
-section:last-child {
+main > section:last-child {
     margin-bottom: calc(2 * var(--padding-value));
 }
 
